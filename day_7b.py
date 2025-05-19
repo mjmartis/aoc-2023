@@ -7,7 +7,7 @@ SCORES = [
   'T', 'J', 'Q', 'K', 'A'
 ]
 
-def solve(instream, scores):
+def solve(instream):
   data = []
   for l in instream.readlines():
     hand_str, bid_str = l[:-1].split()
@@ -22,10 +22,10 @@ def solve(instream, scores):
       score = [m for m in sorted(hand_mults.values(), reverse=True)]
       score[0] += len([c for c in hand_str if c == 'J'])
 
-    hand = tuple(scores.index(c) for c in hand_str)
+    hand = tuple(SCORES.index(c) for c in hand_str)
     data.append((tuple(score), hand, int(bid_str)))
 
   print(sum((r + 1) * b for r, (_, _, b) in enumerate(sorted(data))))
 
 if __name__ == '__main__':
-  solve(sys.stdin, SCORES)
+  solve(sys.stdin)
