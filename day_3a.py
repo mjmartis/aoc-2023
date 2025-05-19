@@ -1,7 +1,7 @@
 import sys
 from collections import defaultdict
 
-from utils import gv
+from utils import gv, i_range
 
 # I've subsequently thought that using regexes would be a lot nicer here.
 
@@ -11,9 +11,9 @@ def solve(instream):
   grid = [[c for c in l[:-1]] for l in instream.readlines()]
 
   ns = defaultdict(list)
-  for i in range(len(grid)):
+  for i in i_range(grid):
     start_j = None
-    for j in range(len(grid[0])):
+    for j in i_range(grid[0]):
       if grid[i][j].isnumeric():
         start_j = start_j if start_j is not None else j
         ns[(i, start_j)].append(j)
@@ -21,8 +21,8 @@ def solve(instream):
         start_j = None
 
   good = [[False] * len(grid[0]) for _ in grid]
-  for i in range(len(grid)):
-    for j in range(len(grid[0])):
+  for i in i_range(grid):
+    for j in i_range(grid[0]):
       for di, dj in DIRS:
         if (lv := gv(grid, i + di, j + dj)) is not None and \
            lv != '.' and not lv.isnumeric():

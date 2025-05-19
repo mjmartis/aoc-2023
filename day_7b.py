@@ -25,7 +25,7 @@ def solve(instream):
     hand = tuple(SCORES.index(c) for c in hand_str)
     data.append((tuple(score), hand, int(bid_str)))
 
-  print(sum((r + 1) * b for r, (_, _, b) in enumerate(sorted(data))))
+  print(sum((r+1) * b for r, (_, _, b) in enumerate(sorted(data))))
 
 if __name__ == '__main__':
   solve(sys.stdin)

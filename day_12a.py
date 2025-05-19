@@ -1,5 +1,7 @@
 import sys
 
+from utils import i_range
+
 def parse_input(instream):
   cases = []
   for l in instream.readlines():
@@ -16,8 +18,8 @@ def solve(cases):
 
     # How many ways can we place the first n blocks followed by one or more spaces before
     # index i?
-    init_ways = [0 if '#' in record[:i] else 1 for i in range(len(record)+1)]
-    ways = [init_ways] + [[0] * (len(record)+1) for _ in range(len(blocks))]
+    init_ways = [0 if '#' in record[:i] else 1 for i in i_range(record, o=1)]
+    ways = [init_ways] + [[0] * (len(record)+1) for _ in i_range(blocks)]
 
     for i in range(1, len(blocks)+1):
       for j in range(blocks[i-1]+1, len(record)+1):

@@ -1,10 +1,10 @@
 import sys
 
-from utils import gT
+from utils import gT, i_range
 
 def find_diff(g, d):
   # Try splitting between each i and i+1.
-  for i in range(len(g[0])-1):
+  for i in i_range(g[0], o=-1):
     lefts = [[e for e in r[:i+1]] for r in g]
     rights = [[e for e in r[i+1:]] for r in g]
 
@@ -17,7 +17,7 @@ def find_diff(g, d):
   
   return 0 
 
-def solve(instream):
+def solve(instream, d):
   total = 0
 
   while True:
@@ -28,9 +28,9 @@ def solve(instream):
     if not g:
       break
 
-    total += find_diff(g, 1) + 100 * find_diff(gT(g), 1)
+    total += find_diff(g, d) + 100 * find_diff(gT(g), d)
   
   print(total)
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  solve(sys.stdin, 1)

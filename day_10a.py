@@ -1,5 +1,7 @@
 import sys
 
+from utils import i_range
+
 DELTA = {
   '|': {(1, 0): (1, 0), (-1, 0): (-1, 0)},
   'L': {(1, 0): (0, 1), (0, -1): (-1, 0)},
@@ -39,7 +41,7 @@ def solve(instream):
     f = l.find('S')
     if f > -1:
       si, sj = i, f
-    for j in range(len(l) - 1):
+    for j in i_range(l, o=-1):
       g[(i, j)] = l[j]
 
   for di, dj in [(1, 0), (-1, 0), (0, 1), (-1, 0)]:

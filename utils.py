@@ -9,3 +9,7 @@ def gv(g, i, j):
   if 0 <= i < len(g) and 0 <= j < len(g[0]):
     return g[i][j]
   return None
+
+def i_range(v, o=0):
+  ''' Range of the indices of a collection. '''
+  return range(len(v)+o)

@@ -9,7 +9,8 @@ def parse_seeds(instream):
   return seeds
 
 def parse_maps(instream):
-  # Read maps until end of input.
+  ''' Reads maps until end of input. '''
+
   next_map = {}
   maps = {}
   while True:
@@ -33,8 +34,9 @@ def parse_maps(instream):
 
   return next_map, maps
 
-# Maps and spans must be sorted by starting ID.
 def apply_maps(spans, maps):
+  ''' Maps and spans must be sorted by starting ID. '''
+
   mapped = []
 
   map_i = 0

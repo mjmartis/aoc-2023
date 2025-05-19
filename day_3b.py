@@ -1,7 +1,7 @@
 import sys
 from collections import defaultdict
 
-from utils import gv
+from utils import gv, i_range
 
 # I've subsequently thought that using regexes would be a lot nicer here.
 
@@ -12,9 +12,9 @@ def solve(stdin):
 
   num_pos = defaultdict(list)
   num_starts: list[list[tuple[int, int] | None]] = [[None] * len(grid[0]) for _ in grid]
-  for i in range(len(grid)):
+  for i in i_range(grid):
     start_j = None
-    for j in range(len(grid[0])):
+    for j in i_range(grid[0]):
       if grid[i][j].isnumeric():
         start_j = start_j if start_j is not None else j
         num_pos[(i, start_j)].append(j)
@@ -23,8 +23,8 @@ def solve(stdin):
         start_j = None
 
   good = [[False] * len(grid[0]) for _ in grid]
-  for i in range(len(grid)):
-    for j in range(len(grid[0])):
+  for i in i_range(grid):
+    for j in i_range(grid[0]):
       for di, dj in DIRS:
         if (lv := gv(grid, i + di, j + dj)) is not None and \
            not lv.isnumeric() and lv != '.':
@@ -36,8 +36,8 @@ def solve(stdin):
       part_nums[(i, start_j)] = int(''.join([grid[i][j] for j in js]))
 
   total = 0
-  for i in range(len(grid)):
-    for j in range(len(grid[0])):
+  for i in i_range(grid):
+    for j in i_range(grid[0]):
       if grid[i][j] != '*':
         continue
 

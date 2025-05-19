@@ -1,5 +1,7 @@
 import sys
-  
+
+from utils import i_range
+
 RS = [
   'one',
   'two',
@@ -15,7 +17,7 @@ RS = [
 RSIS = dict([(v, i + 1) for i, v in enumerate(RS)])
 
 def find_num(s, d):
-  for i in list(range(len(s)))[::d]:
+  for i in i_range(s)[::d]:
     if s[i].isnumeric():
       return int(s[i])
 

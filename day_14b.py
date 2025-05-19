@@ -1,6 +1,6 @@
 import sys
 
-from utils import gT
+from utils import gT, i_range
 
 STEPS = 1000000000 * 4
 
@@ -10,7 +10,7 @@ def rotate_cw(g):
 def tilt_row(row):
   tilted = []
   rock_count = 0
-  for i in range(len(row)+1):
+  for i in i_range(row, o=1):
     if i == len(row) or row[i] == '#':
       tilted += ['.'] * (i - len(tilted) - rock_count)
       tilted += ['O'] * rock_count + row[i:i+1]
