@@ -26,8 +26,8 @@ def solve(instream):
   g_in = [[c for c in l[:-1]] for l in instream.readlines()]
 
   # Iterate cycles until we see a repeat.
-  have_seen_g = set()
-  seen_gs = []
+  seen_gs = set()
+  gs = []
   g = rotate_cw(g_in)
   while True:
     # Complete a full cycle before caching.
@@ -38,17 +38,17 @@ def solve(instream):
     for _ in range(4):
       g = rotate_cw([tilt_row(r) for r in g])
 
-    if (key := tuple(map(tuple, g))) not in have_seen_g:
-      have_seen_g.add(key)
-      seen_gs.append(g)
+    if (key := tuple(map(tuple, g))) not in seen_gs:
+      seen_gs.add(key)
+      gs.append(g)
     else:
       break
   
   # Find the start of the loop and offset into the loop that matches the target step.
-  loop_start_i = seen_gs.index(g)
-  loop_offset_i = (CYCLES-1-loop_start_i) % (len(seen_gs)-loop_start_i)
+  loop_start_i = gs.index(g)
+  loop_offset_i = (CYCLES-1-loop_start_i) % (len(gs)-loop_start_i)
 
-  print(calc_load(seen_gs[loop_start_i+loop_offset_i]))
+  print(calc_load(gs[loop_start_i+loop_offset_i]))
 
 if __name__ == '__main__':
   solve(sys.stdin)
