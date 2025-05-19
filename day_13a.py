@@ -1,6 +1,7 @@
 import sys
 
 from day_13b import find_diff
+from utils import gT
 
 def solve(instr):
   total = 0
@@ -13,7 +14,7 @@ def solve(instr):
     if not g:
       break
 
-    total += find_diff(g, 0) + 100 * find_diff(list(map(list, zip(*g))), 0)
+    total += find_diff(g, 0) + 100 * find_diff(gT(g), 0)
   
   print(total)
 
