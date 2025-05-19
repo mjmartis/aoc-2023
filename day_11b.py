@@ -2,6 +2,8 @@ import sys
 from collections import defaultdict
 from itertools import product
 
+from utils import gT
+
 SKIP_LEN = int(1e6)
 
 def dists_for_leading_dim(g, skip_len):
@@ -23,7 +25,7 @@ def solve(instream, skip_len):
   g = [[c for c in l[:-1]] for l in instream.readlines()]
 
   total = dists_for_leading_dim(g, skip_len)
-  total += dists_for_leading_dim(list(map(list, zip(*g))), skip_len)
+  total += dists_for_leading_dim(gT(g), skip_len)
   print(total // 2)
 
 if __name__ == '__main__':

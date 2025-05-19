@@ -1,14 +1,11 @@
 import sys
 from collections import defaultdict
 
+from utils import gv
+
 # I've subsequently thought that using regexes would be a lot nicer here.
 
 DIRS = {(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)}
-
-def v(g, i, j):
-  if 0 <= i < len(g) and 0 <= j < len(g[0]):
-    return g[i][j] != '.' and not g[i][j].isnumeric()
-  return False
 
 def solve(instream):
   grid = [[c for c in l[:-1]] for l in instream.readlines()]
@@ -27,7 +24,8 @@ def solve(instream):
   for i in range(len(grid)):
     for j in range(len(grid[0])):
       for di, dj in DIRS:
-        if v(grid, i + di, j + dj):
+        if (lv := gv(grid, i + di, j + dj)) is not None and \
+           lv != '.' and not lv.isnumeric():
           good[i][j] = True
 
   total = 0

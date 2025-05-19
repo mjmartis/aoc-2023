@@ -1,14 +1,11 @@
 import sys
 from collections import defaultdict
 
+from utils import gv
+
 # I've subsequently thought that using regexes would be a lot nicer here.
 
 DIRS = {(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)}
-
-def v(g, i, j):
-  if 0 <= i < len(g) and 0 <= j < len(g[0]):
-    return g[i][j]
-  return None
 
 def solve(stdin):
   grid = [[c for c in l[:-1]] for l in stdin.readlines()]
@@ -29,8 +26,8 @@ def solve(stdin):
   for i in range(len(grid)):
     for j in range(len(grid[0])):
       for di, dj in DIRS:
-        gv = v(grid, i + di, j + dj)
-        if gv is not None and not gv.isnumeric() and gv != '.':
+        if (lv := gv(grid, i + di, j + dj)) is not None and \
+           not lv.isnumeric() and lv != '.':
           good[i][j] = True
 
   part_nums = {}
@@ -46,9 +43,8 @@ def solve(stdin):
 
       adj_part_nums = set()
       for di, dj in DIRS:
-        gv = v(num_starts, i + di, j + dj)
-        if gv is not None:
-          adj_part_nums.add(gv)
+        if (lv := gv(num_starts, i + di, j + dj)) is not None:
+          adj_part_nums.add(lv)
 
       if len(adj_part_nums) == 2:
         n1, n2 = list(adj_part_nums)
