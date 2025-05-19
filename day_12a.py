@@ -18,7 +18,7 @@ def solve(cases):
 
     # How many ways can we place the first n blocks followed by one or more spaces before
     # index i?
-    init_ways = [0 if '#' in record[:i] else 1 for i in i_range(record, o=1)]
+    init_ways = [0 if '#' in record[:i] else 1 for i in i_range(record, buf=1)]
     ways = [init_ways] + [[0] * (len(record)+1) for _ in i_range(blocks)]
 
     for i in range(1, len(blocks)+1):

@@ -10,9 +10,9 @@ def rotate_cw(g):
 def tilt_row(row):
   tilted = []
   rock_count = 0
-  for i in i_range(row, o=1):
+  for i in i_range(row, buf=1):
     if i == len(row) or row[i] == '#':
-      tilted += ['.'] * (i - len(tilted) - rock_count)
+      tilted += ['.'] * (i-len(tilted)-rock_count)
       tilted += ['O'] * rock_count + row[i:i+1]
       rock_count = 0
     elif row[i] == 'O':

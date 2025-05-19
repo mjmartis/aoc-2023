@@ -10,6 +10,6 @@ def gv(g, i, j):
     return g[i][j]
   return None
 
-def i_range(v, o=0):
+def i_range(v, buf=0):
   ''' Range of the indices of a collection. '''
-  return range(len(v)+o)
+  return range(len(v)+buf)

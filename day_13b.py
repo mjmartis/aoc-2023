@@ -4,7 +4,7 @@ from utils import gT, i_range
 
 def find_diff(g, d):
   # Try splitting between each i and i+1.
-  for i in i_range(g[0], o=-1):
+  for i in i_range(g[0], buf=-1):
     lefts = [[e for e in r[:i+1]] for r in g]
     rights = [[e for e in r[i+1:]] for r in g]
 

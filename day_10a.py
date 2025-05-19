@@ -41,7 +41,7 @@ def solve(instream):
     f = l.find('S')
     if f > -1:
       si, sj = i, f
-    for j in i_range(l, o=-1):
+    for j in i_range(l, buf=-1):
       g[(i, j)] = l[j]
 
   for di, dj in [(1, 0), (-1, 0), (0, 1), (-1, 0)]:
