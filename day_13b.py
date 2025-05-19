@@ -8,11 +8,11 @@ def find_diff(g, d):
     lefts = [[e for e in r[:i+1]] for r in g]
     rights = [[e for e in r[i+1:]] for r in g]
 
-    diffs = []
+    diffs = 0
     for (l, r) in zip(lefts, rights):
-      diffs.append(sum(1 for u, v in zip(l[::-1], r) if u != v))
+      diffs += sum(1 for u, v in zip(l[::-1], r) if u != v)
 
-    if sum(diffs) == d:
+    if diffs == d:
       return i+1
   
   return 0 
