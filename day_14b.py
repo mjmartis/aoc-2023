@@ -31,16 +31,16 @@ def calc_load(g):
   return sum(sum(i+1 for i, c in enumerate(r) if c == 'O') for r in g)
 
 def solve(instream):
-  gin = [[c for c in l[:-1]] for l in instream.readlines()]
+  g_in = [[c for c in l[:-1]] for l in instream.readlines()]
 
   # Iterate tilts until we see a repeat.
-  have_seen = set()
+  have_seen_g = set()
   seen_gs = []
-  g = rotate_cw(gin)
+  g = rotate_cw(g_in)
   while True:
-    g = tilt_grid(g, len(have_seen) % 4)
-    if (key := tuple(map(tuple, g))) not in have_seen:
-      have_seen.add(key)
+    g = tilt_grid(g, len(have_seen_g) % 4)
+    if (key := tuple(map(tuple, g))) not in have_seen_g:
+      have_seen_g.add(key)
       seen_gs.append(g)
     else:
       break
