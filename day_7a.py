@@ -14,7 +14,7 @@ def solve(instream):
     hand_mults = defaultdict(int)
     for c in hand_str:
       hand_mults[c] += 1
-    score = tuple(m for m in sorted(hand_mults.values(), reverse=True))
+    score = tuple(sorted(hand_mults.values(), reverse=True))
 
     hand = tuple(SCORES.index(c) for c in hand_str)
     data.append((score, hand, int(bid_str)))

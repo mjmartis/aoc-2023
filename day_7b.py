@@ -19,8 +19,8 @@ def solve(instream):
     if len(hand_mults) == 0:
       score = [5]
     else:
-      score = [m for m in sorted(hand_mults.values(), reverse=True)]
-      score[0] += len([c for c in hand_str if c == 'J'])
+      score = sorted(hand_mults.values(), reverse=True)
+      score[0] += hand_str.count('J')
 
     hand = tuple(SCORES.index(c) for c in hand_str)
     data.append((tuple(score), hand, int(bid_str)))
