@@ -2,7 +2,7 @@ import sys
 
 from utils import i_range
 
-DELTA = {
+NEXT_DIR = {
   '|': {(1, 0): (1, 0), (-1, 0): (-1, 0)},
   'L': {(1, 0): (0, 1), (0, -1): (-1, 0)},
   'F': {(-1, 0): (0, 1), (0, -1): (1, 0)},
@@ -18,35 +18,28 @@ def cycle_len(g, i, j, di, dj):
     i, j = i + di, j + dj
     step_count += 1
 
-    if (i, j) not in g:
-      return None
-
-    if g[(i, j)] == 'S':
+    gv = g.get((i, j), None)
+    if gv == 'S':
       return step_count
 
-    if g[(i, j)] not in DELTA:
+    dirv = NEXT_DIR.get(gv, {}).get((di, dj), None)
+    if not dirv:
       return None
 
-    lookup = DELTA[g[(i, j)]].get((di, dj), None)
-    if not lookup:
-      return None
-
-    di, dj = lookup
+    di, dj = dirv
     
 
 def solve(instream):
   si, sj = None, None
   g = {}
   for i, l in enumerate(instream.readlines()):
-    f = l.find('S')
-    if f > -1:
+    if (f := l.find('S')) > -1:
       si, sj = i, f
     for j in i_range(l, buf=-1):
       g[(i, j)] = l[j]
 
   for di, dj in [(1, 0), (-1, 0), (0, 1), (-1, 0)]:
-    res = cycle_len(g, si, sj, di, dj)
-    if res is not None:
+    if (res := cycle_len(g, si, sj, di, dj)) is not None:
       print(res // 2)
       break
 
