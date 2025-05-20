@@ -9,34 +9,23 @@ def parse_seeds(instream):
   return seeds
 
 def parse_maps(instream):
-  ''' Reads maps until end of input. '''
-
   next_map = {}
   maps = {}
-  while True:
-    # Title line.
-    line = instream.readline()
-    if not line:
-      break
-
+  while (title_line := instream.readline()) != '':
     # Read which map we're populating.
-    src_map, _, dest_map = re.split(r'\W+', line)[:3]
+    src_map, _, dest_map = re.split(r'\W+', title_line)[:3]
     next_map[src_map] = dest_map
     maps[src_map] = []
 
     # Read contents of map.
-    while True:
-      line = instream.readline()
-      if not line or line == '\n':
-        break
-      maps[src_map].append(tuple(int(t) for t in line.strip().split()))
+    while (line := instream.readline()[:-1]) != '':
+      maps[src_map].append(tuple(int(t) for t in line.split()))
     maps[src_map].sort(key=lambda v: v[1])
 
   return next_map, maps
 
 def apply_maps(spans, maps):
-  ''' Maps and spans must be sorted by starting ID. '''
-
+  # Maps and spans must be sorted by starting ID.
   mapped = []
 
   map_i = 0
@@ -54,19 +43,20 @@ def apply_maps(spans, maps):
       if map_src + map_width > unmapped_start:
         break
       map_i += 1
-    assert map_dest is not None and map_src is not None
 
-    # We use the identity map if we're out of other maps or if we are at an
-    # "non-covered" section of the current span. Otherwise, we use the subset
-    # of the map that covers the current span.
+    # We use the identity map if we're out of other maps or if we are at an "non-covered"
+    # section of the current span. Otherwise, we use the subset of the map that covers
+    # the current span.
     end, offset = None, None
     if map_i < len(maps) and unmapped_start < map_src:
+      assert map_src is not None
       end = min(map_src - 1, span_end)
       offset = 0
     elif map_i == len(maps):
       end = span_end
       offset = 0
     else:
+      assert map_src is not None and map_dest is not None
       end = min(span_end, map_src + map_width - 1)
       offset = map_dest - map_src
 
