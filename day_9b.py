@@ -5,7 +5,7 @@ def extrap_poly(vs):
     return 0
 
   ds = [v - u for u, v in zip(vs, vs[1:])]
-  return vs[0] - extrap_poly(ds)
+  return vs[-1] + extrap_poly(ds)
 
 def solve(instream):
   total = 0
