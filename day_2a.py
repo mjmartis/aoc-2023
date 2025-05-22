@@ -24,7 +24,7 @@ def solve(instream):
     if valid:
       out += game_num
 
-  print(out)
+  return out
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

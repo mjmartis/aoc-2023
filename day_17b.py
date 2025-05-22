@@ -27,7 +27,7 @@ def solve(instream):
         q.put((cost + dc, ni, nj, ndi, ndj, ns))
 
   valid_exit = lambda i, j, n: i == len(g)-1 and j == len(g[0])-1 and n <= 6
-  print(min(v for (i, j, _, _, n), v in costs.items() if valid_exit(i, j, n)))
+  return min(v for (i, j, _, _, n), v in costs.items() if valid_exit(i, j, n))
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

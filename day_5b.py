@@ -77,7 +77,7 @@ def solve(seeds, next_map, maps):
     cur_spans = apply_maps(cur_spans, maps[cur_type])
     cur_type = next_map.get(cur_type, None)
 
-  print(min(v for v, _ in cur_spans))
+  return min(v for v, _ in cur_spans)
 
 if __name__ == '__main__':
-  solve(parse_seeds(stdin), *parse_maps(stdin))
+  print(solve(parse_seeds(stdin), *parse_maps(stdin)))

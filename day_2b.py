@@ -17,7 +17,7 @@ def solve(instream):
 
     out += prod(mins.values())
 
-  print(out)
+  return out
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

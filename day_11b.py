@@ -26,7 +26,7 @@ def solve(instream, skip_len):
 
   total = dists_for_leading_dim(g, skip_len)
   total += dists_for_leading_dim(gT(g), skip_len)
-  print(total // 2)
+  return total // 2
 
 if __name__ == '__main__':
-  solve(sys.stdin, SKIP_LEN)
+  print(solve(sys.stdin, SKIP_LEN))

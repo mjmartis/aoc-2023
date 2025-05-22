@@ -5,7 +5,7 @@ def solve(instream):
   for l in instream.readlines():
     vs = [c for c in l if c.isnumeric()]
     total += int(vs[0] + vs[-1])
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

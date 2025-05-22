@@ -17,7 +17,7 @@ def solve(instream):
   g = [[c for c in l[:-1]] for l in instream.readlines()]
   rows = [c[::-1] for c in gT(g)]  # Rotated clockwise 90 degrees.
 
-  print(sum([calc_load(row, 0, 0, 0) for row in rows]))
+  return sum([calc_load(row, 0, 0, 0) for row in rows])
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

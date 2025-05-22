@@ -11,4 +11,4 @@ def parse_seeds(instream):
   return seeds
 
 if __name__ == '__main__':
-  solve(parse_seeds(stdin), *parse_maps(stdin))
+  print(solve(parse_seeds(stdin), *parse_maps(stdin)))

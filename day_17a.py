@@ -22,7 +22,7 @@ def solve(instream):
       if (dc := gv(g, ni, nj)) != None and (ni, nj, ndi, ndj, ns) not in costs and ns >= 0:
         q.put((cost + dc, ni, nj, ndi, ndj, ns))
 
-  print(min(v for (i, j, _, _, _), v in costs.items() if i == len(g)-1 and j == len(g[i])-1))
+  return min(v for (i, j, _, _, _), v in costs.items() if i == len(g)-1 and j == len(g[i])-1)
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

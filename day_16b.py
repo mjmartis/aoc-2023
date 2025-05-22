@@ -13,7 +13,7 @@ def solve(instream):
   for sj in i_range(g[0]):
     best = max(best, count_energised(g, 0, sj, 1, 0))
     best = max(best, count_energised(g, len(g)-1, sj, -1, 0))
-  print(best)
+  return best
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

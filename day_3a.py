@@ -32,7 +32,7 @@ def solve(instream):
   for (i, _), js in ns.items():
     if any(good[i][j] for j in js):
       total += int(''.join([grid[i][j] for j in js]))
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

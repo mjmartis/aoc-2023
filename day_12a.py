@@ -35,7 +35,7 @@ def solve(cases):
 
     total += ways[len(blocks)][len(record)]
 
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(parse_input(sys.stdin))
+  print(solve(parse_input(sys.stdin)))

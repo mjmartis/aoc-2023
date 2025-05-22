@@ -40,8 +40,7 @@ def solve(instream):
 
   for di, dj in [(1, 0), (-1, 0), (0, 1), (-1, 0)]:
     if (res := cycle_len(g, si, sj, di, dj)) is not None:
-      print(res // 2)
-      break
+      return res // 2
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

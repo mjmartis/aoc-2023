@@ -8,4 +8,4 @@ def parse_input(instream):
   return [T], [R]
 
 if __name__ == '__main__':
-  solve(*parse_input(sys.stdin))
+  print(solve(*parse_input(sys.stdin)))

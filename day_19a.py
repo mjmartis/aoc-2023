@@ -49,7 +49,7 @@ def solve(instream):
     if cur_wf == 'A':
       total += sum(q.values())
 
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

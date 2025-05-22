@@ -43,7 +43,7 @@ def count_approvals(wfs, wf_name, r):
 
 def solve(instream):
   wfs = parse_wfs(instream)
-  print(count_approvals(wfs, 'in', {p: (1, MAX_COORD) for p in 'xmas'}))
+  return count_approvals(wfs, 'in', {p: (1, MAX_COORD) for p in 'xmas'})
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

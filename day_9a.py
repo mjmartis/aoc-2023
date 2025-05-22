@@ -12,7 +12,7 @@ def solve(instream):
   for l in instream.readlines():
     ts = list(map(int, l[:-1].split()))
     total += extrap_poly(ts)
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

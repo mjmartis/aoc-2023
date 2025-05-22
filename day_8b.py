@@ -23,7 +23,7 @@ def solve(instream):
     nexts[v] = (l, r)
 
   lens = [count_cycle_len(ins, nexts, s) for s in nexts if s[-1] == 'A']
-  print(reduce(lcm, lens))
+  return reduce(lcm, lens)
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

@@ -31,7 +31,7 @@ def solve(instream):
   total = 0
   for l in instream.readlines():
     total += 10 * find_num(l, 1) + find_num(l, -1)
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

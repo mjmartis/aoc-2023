@@ -7,7 +7,7 @@ def solve(instream):
     for c in s:
       case_total = (case_total + ord(c)) * 17 % 256
     total += case_total
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

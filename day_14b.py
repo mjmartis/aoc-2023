@@ -48,7 +48,7 @@ def solve(instream):
   loop_start_i = gs.index(g)
   loop_offset_i = (CYCLES-1-loop_start_i) % (len(gs)-loop_start_i)
 
-  print(calc_load(gs[loop_start_i+loop_offset_i]))
+  return calc_load(gs[loop_start_i+loop_offset_i])
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

@@ -16,7 +16,7 @@ def solve(instream):
     cur = nexts[cur][0 if ins[i % len(ins)] == 'L' else 1]
     i += 1
 
-  print(i)
+  return i
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

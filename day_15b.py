@@ -19,7 +19,7 @@ def solve(instream):
       del boxes[box][label]
 
   power = lambda i, b: sum((i+1) * (j+1) * f for j, (_, f) in enumerate(b.items()))
-  print(sum(power(i, b) for i, b in enumerate(boxes)))
+  return sum(power(i, b) for i, b in enumerate(boxes))
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

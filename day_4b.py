@@ -15,7 +15,7 @@ def solve(instream):
     for j in range(i+1, i+len(winners & mine)+1):
       copies[j] += copies[i]
 
-  print(sum(copies.values()))
+  return sum(copies.values())
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

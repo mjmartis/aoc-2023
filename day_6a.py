@@ -20,7 +20,7 @@ def solve(Ts, Rs):
     ways_count = max(floor(t2 - EPS) - ceil(t1 + EPS) + 1, 0)
     total *= ways_count
 
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(*parse_input(sys.stdin))
+  print(solve(*parse_input(sys.stdin)))

@@ -10,7 +10,7 @@ def solve(instream):
     matches = len(winners & mine)
     if matches > 0:
       total += 2 ** (matches - 1)
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

@@ -30,7 +30,7 @@ def count_energised(g, si, sj, di, dj):
 
 def solve(instream):
   g = [l[:-1] for l in instream.readlines()]
-  print(count_energised(g, 0, 0, 0, 1))
+  return count_energised(g, 0, 0, 0, 1)
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

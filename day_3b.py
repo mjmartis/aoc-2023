@@ -50,7 +50,7 @@ def solve(stdin):
         n1, n2 = list(adj_part_nums)
         total += part_nums[n1] * part_nums[n2]
 
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin)
+  print(solve(sys.stdin))

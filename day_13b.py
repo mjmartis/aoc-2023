@@ -30,7 +30,7 @@ def solve(instream, d):
 
     total += find_diff(g, d) + 100 * find_diff(gT(g), d)
   
-  print(total)
+  return total
 
 if __name__ == '__main__':
-  solve(sys.stdin, 1)
+  print(solve(sys.stdin, 1))
