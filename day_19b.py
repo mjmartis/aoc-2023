@@ -27,8 +27,8 @@ def count_approvals(wfs, wf_name, r):
   for op, arg, lit, dest in wfs[wf_name][:-1]:
     next_rs = []
     for r in cur_rs:
-      sign = 0 if op == '<' else -1
-      take, leave = cut_range(r, arg, lit-sign)[::(sign or 1)]
+      r_off, r_dir = (0, 1) if op == '<' else (1, -1)
+      take, leave = cut_range(r, arg, lit+r_off)[::r_dir]
 
       if take:
         total += count_approvals(wfs, dest, take)
