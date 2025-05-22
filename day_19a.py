@@ -5,9 +5,9 @@ import re
 def apply_wfs(q, wfs):
   cur_wf = 'in'
   while cur_wf not in ['A', 'R']:
-    for op, var, val, dest in wfs[cur_wf]:
+    for op, arg, lit, dest in wfs[cur_wf]:
       sign = -1 if not op or op == '<' else 1
-      if not op or val * sign < q[var] * sign:
+      if not op or lit * sign < q[arg] * sign:
         cur_wf = dest
         break
 
@@ -33,16 +33,16 @@ def solve(instream):
   while (l := instream.readline()[:-1]) != '':
     queries.append({})
     for match in re.finditer(r'(\w+)=(\d+)', l):
-      var, val = match.groups()
-      queries[-1][var] = int(val)
+      param, val = match.groups()
+      queries[-1][param] = int(val)
   
   total = 0
   for q in queries:
     cur_wf = 'in'
     while cur_wf not in ['A', 'R']:
-      for op, var, val, cond in wfs[cur_wf]:
+      for op, arg, lit, cond in wfs[cur_wf]:
         sign = -1 if not op or op == '<' else 1
-        if not op or val * sign < q[var] * sign:
+        if not op or lit * sign < q[arg] * sign:
           cur_wf = cond
           break
 
