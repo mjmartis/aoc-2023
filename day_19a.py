@@ -2,17 +2,6 @@ import sys
 from collections import defaultdict
 import re
 
-def apply_wfs(q, wfs):
-  cur_wf = 'in'
-  while cur_wf not in ['A', 'R']:
-    for op, arg, lit, dest in wfs[cur_wf]:
-      sign = -1 if not op or op == '<' else 1
-      if not op or lit * sign < q[arg] * sign:
-        cur_wf = dest
-        break
-
-  return cur_wf
-
 def parse_wfs(instream):
   wfs = defaultdict(list)
   while (l := instream.readline()[:-1]) != '':

@@ -1,18 +1,6 @@
 import sys
 
-def extrap_poly(vs):
-  if all(v == 0 for v in vs):
-    return 0
-
-  ds = [v - u for u, v in zip(vs, vs[1:])]
-  return vs[0] - extrap_poly(ds)
-
-def solve(instream):
-  total = 0
-  for l in instream.readlines():
-    ts = list(map(int, l[:-1].split()))
-    total += extrap_poly(ts)
-  return total
+from day_9a import parse_seqs, solve
 
 if __name__ == '__main__':
-  print(solve(sys.stdin))
+  print(solve([s[::-1] for s in parse_seqs(sys.stdin)]))

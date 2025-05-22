@@ -1,5 +1,8 @@
 import sys
 
+def parse_seqs(instream):
+  return [list(map(int, l[:-1].split())) for l in instream.readlines()]
+
 def extrap_poly(vs):
   if all(v == 0 for v in vs):
     return 0
@@ -7,12 +10,8 @@ def extrap_poly(vs):
   ds = [v - u for u, v in zip(vs, vs[1:])]
   return vs[-1] + extrap_poly(ds)
 
-def solve(instream):
-  total = 0
-  for l in instream.readlines():
-    ts = list(map(int, l[:-1].split()))
-    total += extrap_poly(ts)
-  return total
+def solve(seqs):
+  return sum(extrap_poly(ts) for ts in seqs)
 
 if __name__ == '__main__':
-  print(solve(sys.stdin))
+  print(solve(parse_seqs(sys.stdin)))
